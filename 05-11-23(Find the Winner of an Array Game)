@@ -1,0 +1,23 @@
+class Solution:
+    def getWinner(self, arr: List[int], k: int) -> int:
+        maxi=max(arr)
+        q=deque(arr[1:])
+        curr=arr[0]
+        win=0
+
+        while q:
+            opp=q.popleft()
+            if curr>opp:
+                q.append(opp)
+                win += 1
+            else:
+                q.append(curr)
+                curr=opp
+                win=1
+
+            if win==k or curr==maxi:
+                return curr
+
+            
+
+        
